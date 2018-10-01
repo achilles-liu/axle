@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.axle.action</groupId>
+    <artifactId>axle</artifactId>
+    <version>0.1</version>
+  </parent>
+  <artifactId>axle-example</artifactId>
+  <name>axle-example</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+	  		<groupId>${project.groupId}</groupId>
+	  		<artifactId>axle-dependencies</artifactId>
+	  		<version>${project.version}</version>
+	  		<type>pom</type>
+	  		<scope>import</scope>
+	  	</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    
+    <dependency>
+    	<groupId>org.axle.action</groupId>
+    	<artifactId>axle-starter</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
+  </dependencies>
+</project>
