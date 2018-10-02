@@ -38,8 +38,21 @@ public class ExampleCache {
 	}
 	
 	public Example insert(Example example) {
-		if(cache.containsKey(example.getId())) throw new RuntimeException("example has exsiting");
+		if(cache.containsKey(example.getId())) throw new RuntimeException("example already exists");
 		cache.put(example.getId(), example);
+		return example;
+	}
+	
+	public Example update(Example example) {
+		if(!cache.containsKey(example.getId())) throw new RuntimeException("unknown example entity");
+		cache.put(example.getId(), example);
+		return example;
+	}
+	
+	public Example deleteById(int id) {
+		if(!cache.containsKey(id)) throw new RuntimeException("unknown example entity");
+		Example example = cache.get(id);
+		cache.remove(id);
 		return example;
 	}
 }
