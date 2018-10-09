@@ -16,5 +16,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Parameter {
-	String value() default "";
+	/**
+	 * indicate whether the parameter is from uri,
+	 * For /api/{id},id is path variable.
+	 * @return
+	 */
+	boolean fromUri() default false;
+	boolean required() default false;
+	String regular() default "";
 }

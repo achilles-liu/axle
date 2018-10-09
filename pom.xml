@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<groupId>org.axle.action</groupId>
+    <artifactId>axle</artifactId>
+    <version>0.1</version>
+    <packaging>pom</packaging>
+	<modelVersion>4.0.0</modelVersion>
+	<modules>
+		<module>axle-dependencies</module>
+		<module>axle-autoconfigure</module>
+		<module>axle-core</module>
+		<module>axle-starter</module>
+		<module>axle-example</module>
+	</modules>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+	  			<plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-compiler-plugin</artifactId>
+		            <version>2.3.2</version>
+		            <configuration>
+		                <source>1.8</source>
+		                <target>1.8</target>
+		            </configuration>
+		        </plugin>
+	  		</plugins>
+		</pluginManagement>
+	</build>
+</project>

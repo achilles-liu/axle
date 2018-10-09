@@ -55,4 +55,15 @@ public class ExampleCache {
 		cache.remove(id);
 		return example;
 	}
+	
+	public boolean checkAuth(Example example) {
+		boolean f = false;
+		for(Integer id:cache.keySet()) {
+			Example e = cache.get(id);
+			if(!e.getNickname().equals(example.getNickname())) continue;
+			f = true;
+			break;
+		}
+		return f;
+	}
 }

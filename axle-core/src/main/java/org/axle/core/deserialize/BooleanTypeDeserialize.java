@@ -18,5 +18,9 @@ public class BooleanTypeDeserialize extends AbstractTypeDeserialize {
 	protected Object get(String value) {
 		return Boolean.parseBoolean(value);
 	}
+
+	protected boolean support(Object value) throws Exception {
+		return Boolean.class.isInstance(value);
+	}
 	
 }

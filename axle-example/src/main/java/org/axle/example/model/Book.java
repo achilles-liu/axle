@@ -1,8 +1,13 @@
 package org.axle.example.model;
 
+import org.axle.core.annotation.Parameter;
+
 public class Book {
+	@Parameter
 	private String name;
+	@Parameter
 	private double price;
+	@Parameter
 	private Author author;
 	public String getName() {
 		return name;

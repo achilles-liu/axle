@@ -19,4 +19,8 @@ public class IntegerTypeDeserialize extends AbstractTypeDeserialize {
 		return Integer.parseInt(value);
 	}
 
+	protected boolean support(Object value) throws Exception {
+		return Integer.class.isInstance(value);
+	}
+
 }

@@ -5,6 +5,8 @@ import org.axle.core.TypeParser;
 import org.axle.core.deserialize.TypeDeserializeChain;
 import org.axle.core.formatter.Formatter;
 import org.axle.core.formatter.JsonFormatter;
+import org.axle.core.security.AuthInterceptor;
+import org.axle.core.security.AuthoritionFactoryBean;
 import org.axle.core.web.ActionDispatcherServlet;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -14,7 +16,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
  * axle-autoconfigure
@@ -24,7 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
  */
 @Configuration
 @ConditionalOnClass(ActionDispatcherServlet.class)
-public class ActionConfig implements ApplicationContextAware{
+public class ActionConfig implements ApplicationContextAware,WebMvcConfigurer{
 	
 	private ApplicationContext applicationContext;
 	
@@ -52,5 +57,24 @@ public class ActionConfig implements ApplicationContextAware{
 	
 	public @Bean Formatter format() {
 		return new JsonFormatter();
+	}
+	
+	public @Bean AuthoritionFactoryBean authorition() {
+		return new AuthoritionFactoryBean();
+	}
+
+	public @Bean AuthInterceptor authInterceptor() {
+		return new AuthInterceptor();
+	}
+	
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(authInterceptor()).addPathPatterns("/**");
+	}
+	
+	public @Bean ResourceBundleMessageSource messageSource() {
+		ResourceBundleMessageSource resourceBundleMessageSource = new ResourceBundleMessageSource();
+		resourceBundleMessageSource.setDefaultEncoding("UTF-8");
+		resourceBundleMessageSource.setBasenames(new String[]{"i18n.messages"});
+		return resourceBundleMessageSource;
 	}
 }

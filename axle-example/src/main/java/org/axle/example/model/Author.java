@@ -1,7 +1,11 @@
 package org.axle.example.model;
 
+import org.axle.core.annotation.Parameter;
+
 public class Author {
+	@Parameter
 	private String alias;
+	@Parameter
 	private int age;
 	public String getAlias() {
 		return alias;

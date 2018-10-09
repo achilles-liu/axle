@@ -13,7 +13,7 @@ import org.axle.core.request.Request;
  * @date 2018-10-02
  */
 public class UpdateExampleRequest extends Request{
-	@Parameter
+	@Parameter(fromUri=true,required=true,regular="^[0-9]*[1-9][0-9]*$")
 	private int id;
 	@Parameter
 	private String username;

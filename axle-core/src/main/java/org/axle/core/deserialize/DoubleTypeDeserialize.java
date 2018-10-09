@@ -19,4 +19,8 @@ public class DoubleTypeDeserialize extends AbstractTypeDeserialize {
 		return Double.parseDouble(value);
 	}
 
+	protected boolean support(Object value) throws Exception {
+		return Double.class.isInstance(value);
+	}
+
 }
